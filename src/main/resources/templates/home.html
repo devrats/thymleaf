@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1 th:text="${name}"></h1>
+<h1> the name of the malik is <span th:text="${name}"/> </h1>
+<h1>upper <span th:text="${#strings.toUpperCase(name)}"/></h1>
+<div th:with="a=5,b=56,n=${name}">
+    <h3>sum is <span th:text="${a}+${b}"/></h3>
+</div>
+<ul>
+    <li th:each="n : ${list}">
+        <span th:text="${n}"/>
+    </li>
+</ul>
+<h3> user is
+<span th:style="${isActive} ? 'color:green' : 'color:red'" th:text= "${isActive} ? 'ACTIVE' : 'NOTACTIVE'"/>
+</h3>
+<h3 th:if="${gender} == 'F'"> female</h3>
+<h3 th:unless="${gender} == 'F'"> male </h3>
+<div th:switch="7">
+    <h3 th:case="'1'"> shashi </h3>
+    <h3 th:case="'2'"> shruti </h3>
+    <h3 th:case="'3'"> richa </h3>
+    <h3 th:case="'4'"> devvrat </h3>
+    <h3 th:case="*"> pta ni </h3>
+</div>
+
+<footer id="host" th:replace="index::footer1(${title})"/>
+<footer id="host1" th:include="index::footer1(${title})"/>
+<footer id="host2" th:insert="index::footer1(${title})"/>
+</body>
+</html>
